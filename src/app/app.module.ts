@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layour/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CatagoryNavbarComponent } from './layout/catagory-navbar/catagory-navbar.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,11 +14,11 @@ import { TermConditionsComponent } from './pages/term-conditions/term-conditions
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
 import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     CatagoryNavbarComponent,
     HomeComponent,
@@ -30,7 +29,8 @@ import { SubscriptionFormComponent } from './subscription-form/subscription-form
     TermConditionsComponent,
     CommentListComponent,
     CommentFormComponent,
-    SubscriptionFormComponent
+    SubscriptionFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

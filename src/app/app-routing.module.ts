@@ -5,9 +5,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SingleCatagoryComponent } from './pages/single-catagory/single-catagory.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
-import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
-import { CommentFormComponent } from './comment/comment-form/comment-form.component';
-import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
 
 const routes: Routes = [
   {
@@ -31,16 +29,8 @@ const routes: Routes = [
     component:SinglePostComponent
   },
   {
-    path:'subscription-form', 
-    component:SubscriptionFormComponent
-  },
-  {
-    path:'comment-form',
-    component:CommentFormComponent
-  },
-  {
-    path:'comment-list',
-    component:CommentListComponent
+    path:'term-condition',
+    component:TermConditionsComponent
   }
 ];
 
