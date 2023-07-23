@@ -1,10 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap');
 
 
-:root{
-    --primaryColor:white !important;
+
+:root {
+    --primary-color: #3498DB;
+    --secondary-color: #e6eff5 ;
+    --background-color:#f7f7f7 ;
+
+    --footer-navbar-color: #0f3d5a ;
+    --text-color-navbar:rgb(255, 245, 245);
+    --body-text-color:black;
 }
-.test{
-    color: var(--primaryColor);
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--body-text-color);
+}
+
+.site-logo {
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    font-size: 1.5em;
+}
+.box-shadow{
+    border: none;
+    box-shadow: 0px 0px 30px -10px rgb(117, 115, 115)
 }

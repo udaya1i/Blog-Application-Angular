@@ -1,4 +1,6 @@
-.app-body{
-    min-height: 55vh;
+
+.b-body{
+    /* min-height: 60vh; */
     margin-top: 150px;
+    min-height: 60%;
 }

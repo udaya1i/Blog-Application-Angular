@@ -5,3 +5,8 @@ footer {
     margin-top: 80vh;
 }
 
+
+.nav-link{
+    color: var(--text-color-navbar);
+    
+}
