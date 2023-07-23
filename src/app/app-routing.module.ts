@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { SingleCatagoryComponent } from './pages/single-catagory/single-catagory.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
+import { PostCardComponent } from './layout/post-card/post-card.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   {
     path:'term-condition',
     component:TermConditionsComponent
+  },{
+    path:'card',
+    component:PostCardComponent
   }
 ];
 

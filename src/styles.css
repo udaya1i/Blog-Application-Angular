@@ -5,11 +5,11 @@
 
 
 :root {
-    --primary-color: #3498DB;
+    --primary-color: #777c80;
     --secondary-color: #e6eff5 ;
     --background-color:#f7f7f7 ;
 
-    --footer-navbar-color: #0f3d5a ;
+    --footer-navbar-color: #09334b ;
     --text-color-navbar:rgb(255, 245, 245);
     --body-text-color:black;
 }
