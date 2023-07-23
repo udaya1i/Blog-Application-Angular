@@ -15,6 +15,7 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
 import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { PostCardComponent } from './layout/post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeaderComponent } from './layout/header/header.component';
     CommentListComponent,
     CommentFormComponent,
     SubscriptionFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostCardComponent
   ],
   imports: [
     BrowserModule,
