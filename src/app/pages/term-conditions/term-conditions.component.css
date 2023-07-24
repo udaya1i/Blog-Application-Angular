@@ -1,0 +1,13 @@
+.btn{
+    width: 100%;
+}
+
+.test-contianer {
+    margin-top: 200px;
+    margin-bottom: 10px;
+    background-color: var(--navbar-footer-primary-color);
+    color: var(--text-color-secondary);
+    min-height: 60vh;
+    padding: 40px;
+
+}

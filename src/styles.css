@@ -12,6 +12,16 @@
     --footer-navbar-color: #09334b ;
     --text-color-navbar:rgb(255, 245, 245);
     --body-text-color:black;
+    --background-color-card:rgb(153, 233, 153);
+/* 
+    --navbar-footer-primary-color:#09334b;
+    --navbar-footer-text-color:#ffffff; */
+    --primary-background-color:#e6eff5;
+    --secondary-background-color:#09334b;
+    --text-color-primary:black;
+    --text-color-secondary:white;
+    --navbar-footer-primary-color:#09334b;
+    
 }
 
 
