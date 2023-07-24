@@ -1,0 +1,23 @@
+.comments{
+    border: none;
+    border-radius: 5px;
+    background: var(--secondary-color);
+    margin-bottom: 20px;
+}
+.comments{
+    padding: 10px;
+}
+span {
+    color: blue;
+}
+.reply{
+    margin-left: 20px;
+}
+
+
+a{
+    text-decoration: none;
+}
+p{
+    margin-bottom: 30px;
+}

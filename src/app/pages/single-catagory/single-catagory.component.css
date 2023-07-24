@@ -1,0 +1,13 @@
+.single-page-contianer{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    
+    background: var(--secondary-color);
+}
+.single-page-card-details{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}

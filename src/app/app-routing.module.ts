@@ -7,6 +7,8 @@ import { SingleCatagoryComponent } from './pages/single-catagory/single-catagory
 import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
 import { PostCardComponent } from './layout/post-card/post-card.component';
+import { CommentFormComponent } from './comment/comment-form/comment-form.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
 
 const routes: Routes = [
   {
@@ -32,7 +34,16 @@ const routes: Routes = [
   {
     path: 'term-condition',
     component: TermConditionsComponent
+  },
+  {
+    path:'comment',
+    component:CommentFormComponent
+  },
+  {
+    path:'comment-list',
+    component:CommentListComponent
   }
+
 ];
 
 @NgModule({
