@@ -1,15 +1,10 @@
 .card{
-width: 300px;
-margin-bottom: 20px;
-padding: 10px;
-}
-img{
-    width: 100%;
-}
-.ml-3{
-    margin-left: 10px;
-}
-.box-shadow{
+    max-width: 350px;
     border: none;
-    box-shadow: 0px 0px 30px 10px rgb(49, 51, 56);
+    box-shadow: 0px 0px 30px -10px rgb(12, 12, 12);
+    margin-bottom: 20px;
+}
+
+.move{
+    margin-left: 10px;
 }

@@ -10,31 +10,28 @@ import { PostCardComponent } from './layout/post-card/post-card.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
   {
-    path:'about',
-    component:AboutComponent
+    path: 'about',
+    component: AboutComponent
   },
   {
-    path:'contact',
-    component:ContactComponent
+    path: 'contact',
+    component: ContactComponent
   },
   {
-    path:'single-catagory',
-    component:SingleCatagoryComponent
+    path: 'single-catagory',
+    component: SingleCatagoryComponent
   },
   {
-    path:'single-post',
-    component:SinglePostComponent
+    path: 'single-post',
+    component: SinglePostComponent
   },
   {
-    path:'term-condition',
-    component:TermConditionsComponent
-  },{
-    path:'card',
-    component:PostCardComponent
+    path: 'term-condition',
+    component: TermConditionsComponent
   }
 ];
 

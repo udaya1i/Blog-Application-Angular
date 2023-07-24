@@ -1,10 +1,21 @@
-.featured-section{
+ .featured-section{
     padding-left: 90px;
     padding-right: 90px;
     padding-bottom: 90px;
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    background: var(--secondary-color);
+
 }
+/*
 .text-color{
     color: white;
 }
+ */
+ .popular-post{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+ }
+
 
