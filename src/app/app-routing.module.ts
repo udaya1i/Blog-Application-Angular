@@ -9,6 +9,7 @@ import { TermConditionsComponent } from './pages/term-conditions/term-conditions
 import { PostCardComponent } from './layout/post-card/post-card.component';
 import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path:'comment-list',
     component:CommentListComponent
+  },
+  {
+    path:'superadmin-subscription',
+    component:SubscriptionComponent
   }
 
 ];

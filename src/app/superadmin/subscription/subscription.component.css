@@ -1,0 +1,9 @@
+.card{
+    height: 200px;
+    background-color: var(--secondary-color);
+
+}
+
+.contianer{
+    padding: 20px;
+}

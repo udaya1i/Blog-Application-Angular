@@ -16,6 +16,12 @@ import { CommentFormComponent } from './comment/comment-form/comment-form.compon
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { PostCardComponent } from './layout/post-card/post-card.component';
+import { LoginComponent } from './superadmin/login/login.component';
+import { CategoryComponent } from './superadmin/category/category.component';
+import { PostComponent } from './superadmin/post/post.component';
+import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
+import { CommentComponent } from './superadmin/comment/comment.component';
+import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { PostCardComponent } from './layout/post-card/post-card.component';
     CommentFormComponent,
     SubscriptionFormComponent,
     HeaderComponent,
-    PostCardComponent
+    PostCardComponent,
+    LoginComponent,
+    CategoryComponent,
+    PostComponent,
+    SubscriptionComponent,
+    CommentComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
