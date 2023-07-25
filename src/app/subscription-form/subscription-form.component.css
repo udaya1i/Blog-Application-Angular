@@ -22,3 +22,7 @@ input[type=text],
 input[type=email] {
     width: 100%;
 }
+button{
+    background: rgb(135, 211, 236);
+    border: none;
+}

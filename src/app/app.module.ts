@@ -24,6 +24,7 @@ import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment.prod';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfiguration),
     AngularFirestoreModule,
+    FormsModule
     
   ],
   providers: [],

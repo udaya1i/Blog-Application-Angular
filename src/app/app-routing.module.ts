@@ -10,6 +10,8 @@ import { PostCardComponent } from './layout/post-card/post-card.component';
 import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
 import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
+import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
+import { CategoryComponent } from './superadmin/category/category.component';
 
 const routes: Routes = [
   {
@@ -45,8 +47,12 @@ const routes: Routes = [
     component:CommentListComponent
   },
   {
-    path:'superadmin-subscription',
-    component:SubscriptionComponent
+    path:'superadmin-dashboard',
+    component:DashboardComponent
+  },
+  {
+    path:'category',
+    component:CategoryComponent
   }
 
 ];

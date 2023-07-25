@@ -1,0 +1,15 @@
+.card{
+    height: 250px;
+    background-color: var(--secondary-color);
+
+}
+
+.contianer{
+    padding: 20px;
+}
+.card:hover{
+    margin: 1px;
+    padding: 1px;
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
