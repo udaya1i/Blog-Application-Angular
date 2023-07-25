@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -22,6 +21,10 @@ import { PostComponent } from './superadmin/post/post.component';
 import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
 import { CommentComponent } from './superadmin/comment/comment.component';
 import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfiguration),
+    AngularFirestoreModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
