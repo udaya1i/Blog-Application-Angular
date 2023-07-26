@@ -1,30 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap');
+/* @import 'node_modules/ngx-toastr/toastr'; */
+@import '~ngx-toastr/toastr.css';
+
 
 
 
 :root {
     --primary-color: #49916f;
-    --secondary-color: #e6eff5 ;
-    --background-color:#f7f7f7 ;
+    --secondary-color: #e6eff5;
+    --background-color: #f7f7f7;
 
-    --footer-navbar-color: #09334b ;
-    --text-color-navbar:rgb(255, 245, 245);
-    --body-text-color:black;
-    --background-color-card:rgb(153, 233, 153);
-/* 
-    --navbar-footer-primary-color:#09334b;
-    --navbar-footer-text-color:#ffffff; */
-    --primary-background-color:#e6eff5;
-    --secondary-background-color:#09334b;
-    --text-color-primary:black;
-    --text-color-secondary:white;
-    --navbar-footer-primary-color:#09334b;
-    --hover-color:#cae7fa;
-    
+    --footer-navbar-color: #09334b;
+    --text-color-navbar: rgb(255, 245, 245);
+    --body-text-color: black;
+    --background-color-card: rgb(153, 233, 153);
+   
+    --primary-background-color: #e6eff5;
+    --secondary-background-color: #09334b;
+    --text-color-primary: black;
+    --text-color-secondary: white;
+    --navbar-footer-primary-color: #09334b;
+    --hover-color: #cae7fa;
 }
-
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -38,10 +37,12 @@ body {
     background-color: var(--secondary-color);
     font-size: 1.5em;
 }
-.box-shadow{
+
+.box-shadow {
     border: none;
     box-shadow: 0px 0px 30px -10px rgb(117, 115, 115)
 }
+
 .btn {
     height: 50px;
     width: 100px;
@@ -50,6 +51,7 @@ body {
     color: var(--secondary-color);
     box-shadow: 0px 0px 30px -10px rgb(117, 115, 115);
 }
+
 input[type=text],
 input[type=email] {
     height: 50px;

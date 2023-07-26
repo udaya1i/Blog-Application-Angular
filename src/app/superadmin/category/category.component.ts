@@ -1,26 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { SuperadminCategoryServiceService } from '../superadmin-category-service.service';
+import { CategoryInterface } from 'src/app/interfaces/category-interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
+  // animations: [myNgIfAnimation] // <-- Don't forget!
+
 })
 export class CategoryComponent implements OnInit {
-
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private categoryService: SuperadminCategoryServiceService, private toaster:ToastrService ) { }
   ngOnInit(): void {
   }
-  Onsubmit(data: any) {
-    let categoryData = {
-      category: data.NameOfCategory
-    }
-    this.firestore.collection('Catagories').add(categoryData).then((DocumentReferance) => {
-      console.log("This is documentation", DocumentReferance, "and it is stored with id ", DocumentReferance.id);
-    }).catch(error => {
-      console.log("there is a error saving data to firebase database, and the reason is ", error);
-      alert("error!");
-    })
+  Onsubmit(data: CategoryInterface) {
+   this.categoryService.submitDataToDatabase(data);
   }
 }
 
