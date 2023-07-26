@@ -12,10 +12,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryComponent implements OnInit {
   constructor(private categoryService: SuperadminCategoryServiceService, private toaster:ToastrService ) { }
+  catagoryData:any
   ngOnInit(): void {
+    this.categoryService.getCategory().subscribe(res=>{
+      console.log("this is data",res);
+      this.catagoryData = res;
+    })
+    
   }
   Onsubmit(data: CategoryInterface) {
+
    this.categoryService.submitDataToDatabase(data);
+  }
+  deleteCategory(data:CategoryInterface){
+    console.log("this is id", data);
+    this.categoryService.deleteCategoryById(data);
   }
 }
 

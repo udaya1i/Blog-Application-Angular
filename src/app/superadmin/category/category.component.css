@@ -2,10 +2,10 @@
     background-color: var(--secondary-color);
 }
 .text-center{
-    /* color: var(--primary-text-color); */
-}
-button{
-    background: rgb(135, 211, 236);
-    border: none;
-}
 
+}
+i{
+    /* border: none; */
+    margin-left: 20px;
+    cursor: pointer;
+}

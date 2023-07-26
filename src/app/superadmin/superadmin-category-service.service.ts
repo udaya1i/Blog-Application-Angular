@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { CategoryInterface } from '../interfaces/category-interface';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,23 @@ export class SuperadminCategoryServiceService {
       this.toaster.success("Data Saved Successfully");
 
     }).catch(error => {
-      console.log("there is a error saving data to firebase database, and the reason is ", error);
-      alert("error!");
+      console.log(error);
       this.toaster.error("There is a error to save you data")
     });
+  }
+  getCategory() {
+    return this.firestore.collection('Categoriess').snapshotChanges().pipe(
+      map(datas => {
+        return datas.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { data, id }
+        })
+      })
+    )
+  }
+  deleteCategoryById(id:CategoryInterface){
+    this.firestore.collection('Categoriess')
   }
 }
 
