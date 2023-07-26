@@ -1,14 +1,14 @@
 <div class="container ">
     <div class="row">
         <div class="col-md-12 mt-5 card">
-            <h4 class="text-center mt-5">New Categories</h4>
-            <p class="text-center">Add New Category</p>
+            <h4 class="text-center mt-5">{{editCategor}} Categories</h4>
+            <p class="text-center">Add {{editCategor}} Category</p>
             <div class="container mt-4">
                 <form class="row mb-5" #addcatagory="ngForm" (ngSubmit)="Onsubmit(addcatagory.value)">
                     <div class="col-md-10">
                         <div class="form-group">
-                            <input required type="text" ngModel name="NameOfCategory"
-                                class="form-control box-shadow mb-2" placeholder="Add New Category" #category="ngModel"
+                            <input required type="text" [(ngModel)]="categoryNamees" name="NameOfCategory"
+                           class="form-control box-shadow mb-2" placeholder="Add New Category" #category="ngModel"
                                 required [ngClass]="{ 'is-invalid' : category.invalid && category.touched  }">
                             <div class="alert alert-danger" *ngIf="category.invalid && category.touched">Fill the form
                             </div>
@@ -19,7 +19,6 @@
                             class="btn btn-info btn-block  box-shadow">Submit</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -40,10 +39,10 @@
                             <td>{{i+1}}</td>
                             <td>{{item.data.category}}</td>
                             <td>
-                                <span>
+                                <span (click)="editCategory(item.data.category)">
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span  (click)="deleteCategory(item.id)" >
+                                <span (click)="deleteCategory(item.id)">
                                     <i class="fas fa-trash"></i>
                                 </span>
                             </td>

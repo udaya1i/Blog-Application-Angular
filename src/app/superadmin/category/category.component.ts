@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class CategoryComponent implements OnInit {
   constructor(private categoryService: SuperadminCategoryServiceService, private toaster:ToastrService ) { }
   catagoryData:any
+  categoryNamees:any;
+  editCategor:string='New';
   ngOnInit(): void {
     this.categoryService.getCategory().subscribe(res=>{
       console.log("this is data",res);
@@ -21,12 +23,21 @@ export class CategoryComponent implements OnInit {
     
   }
   Onsubmit(data: CategoryInterface) {
-
    this.categoryService.submitDataToDatabase(data);
+  //  this.
   }
   deleteCategory(data:CategoryInterface){
     console.log("this is id", data);
     this.categoryService.deleteCategoryById(data);
   }
+  editCategory(data:any){
+    this.categoryNamees  = data;
+    this.editCategor = "Edit"
+
+  }
+  update(){
+    
+  }
+
 }
 
