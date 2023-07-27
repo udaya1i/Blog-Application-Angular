@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SuperadminCategoryServiceService } from '../superadmin-category-service.service';
 import { CategoryInterface } from 'src/app/interfaces/category-interface';
 import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
-
 })
 export class CategoryComponent implements OnInit {
   constructor(private categoryService: SuperadminCategoryServiceService, private toaster: ToastrService) { }
@@ -18,8 +16,7 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategory().subscribe(res => {
       this.catagoryData = res;
-    })
-
+    });
   }
   Onsubmit(data: CategoryInterface) {
     let categoryData = {
@@ -27,8 +24,10 @@ export class CategoryComponent implements OnInit {
     }
     if (this.editCategor == 'New') {
       this.categoryService.submitDataToDatabase(categoryData);
+      this.categoryNamees = ' '
     } else if (this.editCategor == 'Edit') {
       this.categoryService.updateCategory(this.categoryId, categoryData);
+      this.categoryNamees = ' '
     }
   }
   deleteCategory(data: string) {
@@ -41,4 +40,3 @@ export class CategoryComponent implements OnInit {
     console.log("this is id", id);
   }
 }
-
