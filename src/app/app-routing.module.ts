@@ -12,6 +12,8 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
 import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
 import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
 import { CategoryComponent } from './superadmin/category/category.component';
+import { AllPostComponent } from './superadmin/post/all-post/all-post.component';
+import { NewPostComponent } from './superadmin/post/new-post/new-post.component';
 
 const routes: Routes = [
   {
@@ -53,6 +55,14 @@ const routes: Routes = [
   {
     path:'category',
     component:CategoryComponent
+  }, 
+  {
+    path:'posts',
+    component:AllPostComponent
+  },
+  {
+    path:'post/new',
+    component:NewPostComponent
   }
 
 ];

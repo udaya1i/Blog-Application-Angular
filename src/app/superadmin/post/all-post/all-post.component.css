@@ -4,4 +4,5 @@ button{
 }
 .card{
     width: 1000px;
+    background-color: var(--secondary-color);
 }

@@ -17,7 +17,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { PostCardComponent } from './layout/post-card/post-card.component';
 import { LoginComponent } from './superadmin/login/login.component';
 import { CategoryComponent } from './superadmin/category/category.component';
-import { PostComponent } from './superadmin/post/post.component';
 import { SubscriptionComponent } from './superadmin/subscription/subscription.component';
 import { CommentComponent } from './superadmin/comment/comment.component';
 import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
@@ -27,6 +26,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllPostComponent } from './superadmin/post/all-post/all-post.component';
+import { NewPostComponent } from './superadmin/post/new-post/new-post.component';
 
 
 
@@ -48,10 +49,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PostCardComponent,
     LoginComponent,
     CategoryComponent,
-    PostComponent,
     SubscriptionComponent,
     CommentComponent,
-    DashboardComponent
+    DashboardComponent,
+    AllPostComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
