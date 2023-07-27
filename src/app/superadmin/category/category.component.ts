@@ -7,37 +7,38 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
-  // animations: [myNgIfAnimation] // <-- Don't forget!
 
 })
 export class CategoryComponent implements OnInit {
-  constructor(private categoryService: SuperadminCategoryServiceService, private toaster:ToastrService ) { }
-  catagoryData:any
-  categoryNamees:any;
-  editCategor:string='New';
+  constructor(private categoryService: SuperadminCategoryServiceService, private toaster: ToastrService) { }
+  catagoryData: any
+  categoryNamees: any;
+  editCategor: string = 'New';
+  categoryId: string = '';
   ngOnInit(): void {
-    this.categoryService.getCategory().subscribe(res=>{
-      console.log("this is data",res);
+    this.categoryService.getCategory().subscribe(res => {
       this.catagoryData = res;
     })
-    
+
   }
   Onsubmit(data: CategoryInterface) {
-   this.categoryService.submitDataToDatabase(data);
-  //  this.
+    let categoryData = {
+      category: data.NameOfCategory
+    }
+    if (this.editCategor == 'New') {
+      this.categoryService.submitDataToDatabase(categoryData);
+    } else if (this.editCategor == 'Edit') {
+      this.categoryService.updateCategory(this.categoryId, categoryData);
+    }
   }
-  deleteCategory(data:CategoryInterface){
-    console.log("this is id", data);
+  deleteCategory(data: string) {
     this.categoryService.deleteCategoryById(data);
   }
-  editCategory(data:any){
-    this.categoryNamees  = data;
+  editCategory(data: any, id: string) {
+    this.categoryNamees = data;
     this.editCategor = "Edit"
-
+    this.categoryId = id;
+    console.log("this is id", id);
   }
-  update(){
-    
-  }
-
 }
 

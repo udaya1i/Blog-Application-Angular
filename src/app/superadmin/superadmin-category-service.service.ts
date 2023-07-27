@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CategoryInterface } from '../interfaces/category-interface';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SuperadminCategoryServiceService {
   constructor(private firestore: AngularFirestore, private toaster: ToastrService) { }
-  submitDataToDatabase(data: CategoryInterface) {
-    let categoryData = {
-      category: data.NameOfCategory
-    }
-    this.firestore.collection('Categoriess').add(categoryData).then((DocumentReferance) => {
+  submitDataToDatabase(data: any) {
+
+    this.firestore.collection('Categoriess').add(data).then((DocumentReferance) => {
       this.toaster.success("Data Saved Successfully");
 
     }).catch(error => {
@@ -21,6 +19,7 @@ export class SuperadminCategoryServiceService {
       this.toaster.error("There is a error to save you data")
     });
   }
+
   getCategory() {
     return this.firestore.collection('Categoriess').snapshotChanges().pipe(
       map(datas => {
@@ -32,29 +31,67 @@ export class SuperadminCategoryServiceService {
       })
     )
   }
-  deleteCategoryById(id:CategoryInterface){
-    this.firestore.collection('Categoriess')
+
+  /** 
+        Delete using collection method 
+  */
+
+  // deleteCategoryById(id: string) {
+  //   try {
+  //     this.firestore.collection('Categoriess').doc(id).delete().then((res) => {
+  //       this.toaster.info("Category Deleted Successfully")
+  //     });
+  //   } catch (er) {
+  //     console.log(er);
+  //     this.toaster.success("Error!!")
+  //   }
+  // }
+
+  /*
+  Delete using path method
+  */
+
+
+  deleteCategoryById(id: string) {
+    try {
+      this.firestore.doc(`Categoriess/${id}`).delete().then(res => {
+        this.toaster.warning('Category Deleted Successully!!');
+      });
+    } catch (er) {
+      console.log(er);
+      this.toaster.error("Error!!")
+
+    }
+  }
+
+  /**
+   * UPDATE USING NORMAL METHOD
+   */
+
+
+  // updateCategory(id: string, categoryObj: object) {
+  //   try {
+  //     console.log("this is the types", typeof id, typeof categoryObj);
+  //     this.firestore.collection('Categoriess').doc(id).update(categoryObj).then((res) => {
+  //       console.log("the product is updated!!", typeof res);
+  //       this.toaster.info("Category Update Successfully!!!")
+  //     })
+  //   } catch (er) {
+  //     console.log(er);
+  //     this.toaster.error("Error")
+  //   }
+  // }
+
+  /**
+   * UPDATE USING PATH METHOD
+   */
+  updateCategory(id: string, categoryObj: object) {
+    try {
+      this.firestore.doc(`Categoriess/${id}`).update(categoryObj).then((res) => {
+        this.toaster.info('Category Update Successfully!!')
+      });
+    } catch (er) {
+      this.toaster.error("Error!!")
+    }
   }
 }
-
-
-   // let subCategoryData = {
-    //   category: 'Samsung a7'
-    // }
-    // let thirdSubCategory = {
-    //   category: 'sammmm'
-    // }
- //sub category ---
-      // this.firestore.collection('Categories').doc(DocumentReferance.id)
-      //  path url method
-      // this.firestore.doc(`Categories/${DocumentReferance.id}`)
-      // .collection('Smartphone').add(subCategoryData).then((SubCatagoryDocumentRefeance) => {
-      // console.log("this is sub Category", SubCatagoryDocumentRefeance);
-      // path url method
-      // this.firestore.collection('Cateogries').doc(DocumentReferance.id).collection('Smartphone').doc(SubCatagoryDocumentRefeance.id)
-      // this.firestore.doc(`Categories/${DocumentReferance.id}/Smartphone/${SubCatagoryDocumentRefeance.id}`)
-      //   .collection('thirdSubCollection').add(thirdSubCategory).then((ThirdSubCategoryId) => {
-      //     console.log("this is third sub cateogry", ThirdSubCategoryId);
-      //   });
-      // });
-      //sub category ----

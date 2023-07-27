@@ -39,7 +39,7 @@
                             <td>{{i+1}}</td>
                             <td>{{item.data.category}}</td>
                             <td>
-                                <span (click)="editCategory(item.data.category)">
+                                <span (click)="editCategory(item.data.category, item.id)">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span (click)="deleteCategory(item.id)">
