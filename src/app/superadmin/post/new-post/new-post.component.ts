@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperadminCategoryServiceService } from '../../superadmin-category-service.service';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -10,10 +11,21 @@ export class NewPostComponent implements OnInit {
   uploadedimage: any = '../../../../assets/img.jpg';
   selectedImage: any;
   category: any;
-  constructor(private service: SuperadminCategoryServiceService) { }
+  postForm!: FormGroup;
+  constructor(private service: SuperadminCategoryServiceService, private formBuildre: FormBuilder) {
+
+  }
   ngOnInit(): void {
     this.service.getCategory().subscribe(cate => {
       this.category = cate;
+    });
+    this.postForm = this.formBuildre.group({
+      title: ['', [Validators.required, Validators.minLength(10)]],
+      image: ['', Validators.required],
+      excerpt: ['', [Validators.required, Validators.minLength(50)]],
+      permlink: ['', Validators.required],
+      content: ['', Validators.required],
+      categorySelector: ['', Validators.required]
     });
   }
   onKeyUp(value: any) {
@@ -22,7 +34,6 @@ export class NewPostComponent implements OnInit {
     console.log(this.permlnik);
   }
   showPreview($event: any) {
-    console.log("this is imvae", typeof this.selectedImage);
     const img = new FileReader();
     img.onload = (e) => {
       this.uploadedimage = e.target?.result
