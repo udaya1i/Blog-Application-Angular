@@ -28,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllPostComponent } from './superadmin/post/all-post/all-post.component';
 import { NewPostComponent } from './superadmin/post/new-post/new-post.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http'
 
 
 
@@ -62,7 +64,10 @@ import { NewPostComponent } from './superadmin/post/new-post/new-post.component'
     AngularFirestoreModule,
     FormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularEditorModule,
+    HttpClientModule
+    
     
   ],
   providers: [],

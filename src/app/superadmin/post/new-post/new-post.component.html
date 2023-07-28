@@ -28,11 +28,12 @@
             </div>
             <div class="col-md-4 ">
                 <div class="form-group">
-                    <label>Please Select the category</label>
+                    <label>Categories</label>
                     <select class="form-control">
-                        <option value="" disabled>
-                            Please Select a category
+                        <option value="" disabled [defaultSelected]="true">
+                          Please Choose Category
                         </option>
+                        <option *ngFor="let item of category">{{item.data.category}}</option>
                     </select>
 
                 </div>
@@ -49,7 +50,8 @@
             <div class="col-md-10 card box-shadow">
                 <div class=" card-body form-group mb-4">
                     <label for="">Content</label>
-                    <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                    <!-- <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea> -->
+                    <angular-editor class="form-control"></angular-editor>
                 </div>
             </div>
             <div class="col-md-12 text-center mt-3">

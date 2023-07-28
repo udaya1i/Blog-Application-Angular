@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SuperadminCategoryServiceService } from '../../superadmin-category-service.service';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -9,8 +9,12 @@ export class NewPostComponent implements OnInit {
   permlnik: string = '';
   uploadedimage: any = '../../../../assets/img.jpg';
   selectedImage: any;
-  constructor() { }
+  category: any;
+  constructor(private service: SuperadminCategoryServiceService) { }
   ngOnInit(): void {
+    this.service.getCategory().subscribe(cate => {
+      this.category = cate;
+    });
   }
   onKeyUp(value: any) {
     const titlevalue = value.target.value;
@@ -19,7 +23,6 @@ export class NewPostComponent implements OnInit {
   }
   showPreview($event: any) {
     console.log("this is imvae", typeof this.selectedImage);
-
     const img = new FileReader();
     img.onload = (e) => {
       this.uploadedimage = e.target?.result
