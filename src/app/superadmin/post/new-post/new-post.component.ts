@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperadminCategoryServiceService } from '../../superadmin-category-service.service';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -21,17 +22,16 @@ export class NewPostComponent implements OnInit {
     });
     this.postForm = this.formBuildre.group({
       title: ['', [Validators.required, Validators.minLength(10)]],
+      categorySelector: ['', Validators.required],
+      permlink: ['', Validators.required],
       image: ['', Validators.required],
       excerpt: ['', [Validators.required, Validators.minLength(50)]],
-      permlink: ['', Validators.required],
-      content: ['', Validators.required],
-      categorySelector: ['', Validators.required]
+      content: ['', [Validators.required, Validators.minLength(100)]],
     });
   }
   onKeyUp(value: any) {
     const titlevalue = value.target.value;
     this.permlnik = titlevalue.replace(/\s/g, '-')
-    console.log(this.permlnik);
   }
   showPreview($event: any) {
     const img = new FileReader();
@@ -40,5 +40,23 @@ export class NewPostComponent implements OnInit {
     }
     img.readAsDataURL($event.target.files[0])
     this.selectedImage = $event.target.files[0];
+  }
+  sumbitNewPost() {
+    const PostData: NewPostInterface = {
+      title: this.postForm.value.title,
+      permLink: this.postForm.value.permLink,
+      category: {
+        categoryId: '',
+        category: ''
+      },
+      ImagePath: this.postForm.value.postForm,
+      excerpt: this.postForm.value.excerpt,
+      content: this.postForm.value.content,
+      isFeatured: false,
+      views: 0,
+      status: 'New',
+      createdAt: new Date()
+
+    }
   }
 }
