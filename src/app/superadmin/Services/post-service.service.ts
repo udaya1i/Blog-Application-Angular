@@ -4,6 +4,7 @@ import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/s
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
+import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,14 +16,19 @@ export class PostServiceService {
     private router: Router
   ) { }
 
-  uploadImage(image: File, data: any) {
+  uploadImage(image: File, data: any, status: string, id: string) {
     const path = `image/${Date.now()}`;
     const fileRef: AngularFireStorageReference = this.storage.ref(path);
     const task = fileRef.put(image).then((res) => {
       this.storage.ref(path).getDownloadURL().subscribe(URL => {
         data.ImagePath = URL
         let postdatas = data;
-        this.saveData(data);
+        if (status == 'Edit') {
+              this.updatePost(id, data)
+        } else {
+          this.saveData(data);
+
+        }
 
       });
     });
@@ -76,6 +82,13 @@ export class PostServiceService {
   }
 
   editBlogData(id: string) {
-    this.dataStorage.collection('PostData').doc(id).valueChanges();
+    return this.dataStorage.collection<NewPostInterface>('PostData').doc(id).valueChanges();
+  }
+
+  updatePost(id:string, postDate:string) {
+    this.dataStorage.doc(`PostData/${id}`).update(postDate).then(res => {
+      this.tosterMessage.success('Post Updated Successfully');
+      this.router.navigate(['/posts'])
+    })
   }
 }

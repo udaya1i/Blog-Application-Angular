@@ -3,8 +3,9 @@ import { SuperadminCategoryServiceService } from '../../Services/superadmin-cate
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 import { PostServiceService } from '../../Services/post-service.service';
-import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryInterface } from 'src/app/interfaces/category-interface';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -16,6 +17,9 @@ export class NewPostComponent implements OnInit {
   selectedImage: any;
   category: any;
   postForm!: FormGroup;
+  editedvalue: NewPostInterface | undefined;
+  status: string = "Add New";
+  docuId:any;
   constructor(
     private service: SuperadminCategoryServiceService,
     private formBuildre: FormBuilder,
@@ -24,21 +28,38 @@ export class NewPostComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.queryParamMap.subscribe((res) => {
-      console.log(res);
+      const id = res.get('id');
+      this.docuId = res.get('id');
+      if (id) {
+        this.postService.editBlogData(id).subscribe(res => {
+          this.editedvalue = res;
+          this.postForm = this.formBuildre.group({
+            title: [this.editedvalue?.title, [Validators.required, Validators.minLength(5)]],
+            categorySelector: [`${this.editedvalue?.category.categoryId}-${this.editedvalue?.category.category}`, Validators.required],
+            permlink: [this.editedvalue?.permLink, Validators.required],
+            image: ['', Validators.required],
+            excerpt: [this.editedvalue?.excerpt, [Validators.required, Validators.minLength(20)]],
+            content: [this.editedvalue?.content, [Validators.required, Validators.minLength(100)]],
+          });
+          this.uploadedimage = this.editedvalue?.ImagePath;
+          this.status = 'Edit'
+        })
+      }
     })
   }
   ngOnInit(): void {
+
 
 
     this.service.getCategory().subscribe(cate => {
       this.category = cate;
     });
     this.postForm = this.formBuildre.group({
-      title: ['', [Validators.required, Validators.minLength(10)]],
+      title: ['', [Validators.required, Validators.minLength(5)]],
       categorySelector: ['', Validators.required],
       permlink: ['', Validators.required],
       image: ['', Validators.required],
-      excerpt: ['', [Validators.required, Validators.minLength(50)]],
+      excerpt: ['', [Validators.required, Validators.minLength(20)]],
       content: ['', [Validators.required, Validators.minLength(100)]],
     });
   }
@@ -57,6 +78,7 @@ export class NewPostComponent implements OnInit {
 
   sumbitNewPost() {
     let splitCategoryData = this.postForm.value.categorySelector.split('-');
+
     const PostData: NewPostInterface = {
       title: this.postForm.value.title,
       permLink: this.postForm.value.permlink,
@@ -72,7 +94,7 @@ export class NewPostComponent implements OnInit {
       excerpt: this.postForm.value.excerpt,
       content: this.postForm.value.content,
     }
-    this.postService.uploadImage(this.selectedImage, PostData);
+    this.postService.uploadImage(this.selectedImage, PostData, this.status, this.docuId);
     this.postForm.reset();
 
     this.router.navigate(['posts'])

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10 text-center card justify-content-center mt-4 mb-3">
-            <h3 class="mt-3 ">Add New Post</h3>
-            <p class="mb-4">You can add new post here</p>
+            <h3 class="mt-3 ">{{status}} Post</h3>
+            <p class="mb-4">You can {{status}} post here</p>
         </div>
     </div>
     <form action="" class="justify-content-center" [formGroup]="postForm" (ngSubmit)="sumbitNewPost()">
@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="col-md-12 text-center mt-3">
-            <button [disabled]="postForm.invalid" class="btn btn-success">Save Post</button>
+            <button [disabled]="postForm.invalid" class="btn btn-success">{{status}} Post</button>
             <button class="btn btn-warning" routerLink="/posts">Back to post</button>
         </div>
     </form>
