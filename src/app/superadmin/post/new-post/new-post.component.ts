@@ -3,6 +3,7 @@ import { SuperadminCategoryServiceService } from '../../Services/superadmin-cate
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 import { PostServiceService } from '../../Services/post-service.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -14,10 +15,17 @@ export class NewPostComponent implements OnInit {
   selectedImage: any;
   category: any;
   postForm!: FormGroup;
-  constructor(private service: SuperadminCategoryServiceService, private formBuildre: FormBuilder, private postService:PostServiceService) {
+  constructor(
+    private service: SuperadminCategoryServiceService, 
+    private formBuildre: FormBuilder, 
+    private postService: PostServiceService,
+    private tosterMessage: ToastrService
+    ) {
 
   }
   ngOnInit(): void {
+
+    
     this.service.getCategory().subscribe(cate => {
       this.category = cate;
     });
@@ -60,7 +68,8 @@ export class NewPostComponent implements OnInit {
       excerpt: this.postForm.value.excerpt,
       content: this.postForm.value.content,
     }
-        this.postService.uploadImage(this.selectedImage);
+    this.postService.uploadImage(this.selectedImage, PostData);
+    this.postForm.reset();
   }
-    
+
 }

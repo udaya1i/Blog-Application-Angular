@@ -6,3 +6,19 @@ button{
     width: 1000px;
     background-color: var(--secondary-color);
 }
+img{
+    width: 150px;
+    padding: 10px;
+}
+td{
+
+    max-width: 250px;
+}
+
+i{
+    margin-left: 20px;
+}
+span{
+    cursor: pointer;
+}
+
