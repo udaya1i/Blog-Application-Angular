@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 import { PostServiceService } from '../../Services/post-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -16,16 +17,19 @@ export class NewPostComponent implements OnInit {
   category: any;
   postForm!: FormGroup;
   constructor(
-    private service: SuperadminCategoryServiceService, 
-    private formBuildre: FormBuilder, 
+    private service: SuperadminCategoryServiceService,
+    private formBuildre: FormBuilder,
     private postService: PostServiceService,
-    private tosterMessage: ToastrService
-    ) {
-
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParamMap.subscribe((res) => {
+      console.log(res);
+    })
   }
   ngOnInit(): void {
 
-    
+
     this.service.getCategory().subscribe(cate => {
       this.category = cate;
     });
@@ -70,6 +74,7 @@ export class NewPostComponent implements OnInit {
     }
     this.postService.uploadImage(this.selectedImage, PostData);
     this.postForm.reset();
-  }
 
+    this.router.navigate(['posts'])
+  }
 }

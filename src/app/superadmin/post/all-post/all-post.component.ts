@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostServiceService } from '../../Services/post-service.service';
-import { MatTable } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-all-post',
@@ -11,20 +11,18 @@ export class AllPostComponent implements OnInit {
   constructor(
     private postDatas: PostServiceService,
     private postService: PostServiceService,
-  ) { }
+  ) {}
+  
   PostDetails: any;
   ngOnInit(): void {
-    this.postService.getAllPostData().subscribe(eg => {
-      this.PostDetails = eg;
-      console.log(eg);
-    });
+    this.postService.getAllPostData().subscribe((res) => {
+      this.PostDetails = res;
+    })
   }
   editBlog() {
 
   }
-  deleteBlog(test: any) {
-    console.log("test", test);
-    this.postDatas.deleteBlog(test);
+  deleteBlog(blodId: any) {
+    this.postDatas.deleteBlog(blodId);
   }
-
 }

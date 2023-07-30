@@ -13,6 +13,8 @@ export class SuperadminCategoryServiceService {
 
     this.firestore.collection('Categoriess').add(data).then((DocumentReferance) => {
       this.toaster.success("Data Saved Successfully");
+      console.log(DocumentReferance);
+      
 
     }).catch(error => {
       console.log(error);
@@ -25,8 +27,9 @@ export class SuperadminCategoryServiceService {
       map(datas => {
         return datas.map(a => {
           const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
+          const id = a.payload.doc.id;      
           return { data, id }
+          
         })
       })
     )

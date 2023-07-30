@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
 @Injectable({
@@ -10,7 +11,8 @@ export class PostServiceService {
 
   constructor(private storage: AngularFireStorage,
     private dataStorage: AngularFirestore,
-    private tosterMessage: ToastrService
+    private tosterMessage: ToastrService,
+    private router: Router
   ) { }
 
   uploadImage(image: File, data: any) {
@@ -20,10 +22,16 @@ export class PostServiceService {
       this.storage.ref(path).getDownloadURL().subscribe(URL => {
         data.ImagePath = URL
         let postdatas = data;
-        this.dataStorage.collection('PostData').add(postdatas).then((res) => {
-          this.tosterMessage.success('Data Uploaded Successfully')
-        });
+        this.saveData(data);
+
       });
+    });
+  }
+  saveData(data: any) {
+    this.dataStorage.collection('PostData').add(data).then((res) => {
+      // this.tosterMessage.success('Data Uploaded Successfully')
+      console.log('this i sres', res);
+
     });
   }
 
@@ -39,18 +47,35 @@ export class PostServiceService {
   //   )
   // }
 
-  getAllPostData(): Observable<any[]> {
-    return this.dataStorage.collection('PostData').valueChanges();
-  }
+  // getAllPostData(): Observable<any[]> {
+  //   return this.dataStorage.collection('PostData').valueChanges();
+  // }
+
   deleteBlog(data: string) {
     try {
       this.dataStorage.collection('PostData').doc(data).delete().then(delted => {
         this.tosterMessage.warning('Blog Deleted Successfully');
         console.log(delted);
-        
+
       });
     } catch (er) {
       this.tosterMessage.error('Failed to delete Blog');
     }
+  }
+
+  getAllPostData() {
+    return this.dataStorage.collection('PostData').snapshotChanges().pipe(
+      map(data => {
+        return data.map(test => {
+          const id = test.payload.doc.id
+          const data = test.payload.doc.data()
+          return { id, data }
+        })
+      })
+    );
+  }
+
+  editBlogData(id: string) {
+    this.dataStorage.collection('PostData').doc(id).valueChanges();
   }
 }

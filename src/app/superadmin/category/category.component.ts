@@ -37,6 +37,5 @@ export class CategoryComponent implements OnInit {
     this.categoryNamees = data;
     this.editCategor = "Edit"
     this.categoryId = id;
-    console.log("this is id", id);
   }
 }

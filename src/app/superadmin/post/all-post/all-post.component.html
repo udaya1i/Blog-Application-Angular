@@ -29,14 +29,15 @@
                     <tbody>
                         <tr *ngFor="let item of PostDetails; index as i ">
                             <td width='10'>{{i+1}}</td>
-                            <td width='100'> <img src="{{item.ImagePath}}" alt="Image Not Found"> </td>
-                            <td>{{item.title}}</td>
-                            <td>{{item.category.category}}</td>
-                            <td>{{item.createdAt.toMillis() | date}}</td>
-                            <td>{{item.excerpt}}</td>
+                            <td width='100'> <img src="{{item.data.ImagePath}}" alt="Image Not Found"> </td>
+                            <td>{{item.data.title}}</td>
+                            <td>{{item.data.category.category}}</td>
+                            <td>{{item.data.createdAt.toMillis() | date}}</td>
+                            <td>{{item.data.excerpt}}</td>
                             <td>
-                               <span (click)="editBlog()"><i class="fas fa-edit"></i></span>
-                               <span (click)="deleteBlog(item.category.categoryId)"><i class="fas fa-trash"></i></span>
+                                <span (click)="editBlog()" routerLink="/post/new" [queryParams]="{id:item.id}"><i
+                                        class="fas fa-edit"></i></span>
+                                <span (click)="deleteBlog(item.id)"><i class="fas fa-trash"></i></span>
                             </td>
                         </tr>
                     </tbody>
