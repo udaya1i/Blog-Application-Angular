@@ -41,7 +41,6 @@
                             <div *ngIf="postForm.get('permlink')?.touched && postForm.get('permlink')?.invalid"
                                 class="alert alert-danger">PermLink Cannot Be Empity</div>
                         </div>
-
                         <div class="form-group mb-3">
                             <label for="">Excerpt</label>
                             <textarea formControlName="excerpt" class="form-control" name="" id="" cols="30"
@@ -58,7 +57,6 @@
                                     class="form-control alert alert-danger">
                                     Excerpt must be more then 50 characters</div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -68,10 +66,10 @@
                     <label>Categories</label>
                     <select class="form-control" formControlName="categorySelector"
                         [ngClass]="{'is-invalid':postForm.get('categorySelector')?.touched && postForm.get('categorySelector')?.invalid}">
-                        <option value="{{item.data.id}}" disabled [defaultSelected]="true">
+                        <option disabled [defaultSelected]="true">
                             Please Choose Category
                         </option>
-                        <option *ngFor="let item of category">{{item.data.category}}</option>
+                        <option *ngFor="let item of category" value="{{item.id}}-{{item.data.category}}">{{item.data.category}}</option>
                     </select>
                     <div *ngIf="postForm.get('categorySelector')?.errors">
                         <div *ngIf="postForm.get('categorySelector')?.touched && postForm.get('categorySelector')?.invalid"
@@ -79,7 +77,6 @@
                             Please choose one character
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <label for="">Post Image</label>

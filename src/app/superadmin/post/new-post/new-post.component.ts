@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SuperadminCategoryServiceService } from '../../superadmin-category-service.service';
+import { SuperadminCategoryServiceService } from '../../Services/superadmin-category-service.service';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
+import { PostServiceService } from '../../Services/post-service.service';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -13,7 +14,7 @@ export class NewPostComponent implements OnInit {
   selectedImage: any;
   category: any;
   postForm!: FormGroup;
-  constructor(private service: SuperadminCategoryServiceService, private formBuildre: FormBuilder) {
+  constructor(private service: SuperadminCategoryServiceService, private formBuildre: FormBuilder, private postService:PostServiceService) {
 
   }
   ngOnInit(): void {
@@ -41,22 +42,25 @@ export class NewPostComponent implements OnInit {
     img.readAsDataURL($event.target.files[0])
     this.selectedImage = $event.target.files[0];
   }
+
   sumbitNewPost() {
+    let splitCategoryData = this.postForm.value.categorySelector.split('-');
     const PostData: NewPostInterface = {
       title: this.postForm.value.title,
-      permLink: this.postForm.value.permLink,
+      permLink: this.postForm.value.permlink,
       category: {
-        categoryId: '',
-        category: ''
+        categoryId: splitCategoryData[0],
+        category: splitCategoryData[1]
       },
-      ImagePath: this.postForm.value.postForm,
-      excerpt: this.postForm.value.excerpt,
-      content: this.postForm.value.content,
+      ImagePath: this.postForm.value.image,
       isFeatured: false,
       views: 0,
       status: 'New',
-      createdAt: new Date()
-
+      createdAt: new Date(),
+      excerpt: this.postForm.value.excerpt,
+      content: this.postForm.value.content,
     }
+        this.postService.uploadImage(this.selectedImage);
   }
+    
 }

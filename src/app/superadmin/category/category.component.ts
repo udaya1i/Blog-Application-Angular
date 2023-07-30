@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SuperadminCategoryServiceService } from '../superadmin-category-service.service';
+import { SuperadminCategoryServiceService } from '../Services/superadmin-category-service.service';
 import { CategoryInterface } from 'src/app/interfaces/category-interface';
 import { ToastrService } from 'ngx-toastr';
 @Component({
