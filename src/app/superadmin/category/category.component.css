@@ -1,11 +1,11 @@
-.card{
+.card {
     background-color: var(--secondary-color);
 }
-.text-center{
 
-}
-i{
-    /* border: none; */
+i {
     margin-left: 20px;
     cursor: pointer;
+}
+.btn{
+    width: 100%;
 }

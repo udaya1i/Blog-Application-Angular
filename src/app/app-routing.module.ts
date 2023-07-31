@@ -14,6 +14,7 @@ import { DashboardComponent } from './superadmin/dashboard/dashboard.component';
 import { CategoryComponent } from './superadmin/category/category.component';
 import { AllPostComponent } from './superadmin/post/all-post/all-post.component';
 import { NewPostComponent } from './superadmin/post/new-post/new-post.component';
+import { LoginComponent } from './superadmin/login/login.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path:'post/new',
     component:NewPostComponent
+  },
+  {
+    path:'auth/login',
+    component:LoginComponent
   }
 
 ];

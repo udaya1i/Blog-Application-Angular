@@ -1,0 +1,18 @@
+.test{
+    border: 1px solid red;
+}
+.btn{
+    width: 100%;
+}
+.form{
+    padding: 10px;
+}
+.card{
+    background-color: var(--secondary-color);
+}
+.message{
+    color: red;
+}
+button{
+    cursor: pointer;
+}

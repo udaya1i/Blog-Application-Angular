@@ -69,7 +69,8 @@
                         <option disabled [defaultSelected]="true">
                             Please Choose Category
                         </option>
-                        <option *ngFor="let item of category" value="{{item.id}}-{{item.data.category}}">{{item.data.category}}</option>
+                        <option *ngFor="let item of category" value="{{item.id}}-{{item.data.category}}">
+                            {{item.data.category}}</option>
                     </select>
                     <div *ngIf="postForm.get('categorySelector')?.errors">
                         <div *ngIf="postForm.get('categorySelector')?.touched && postForm.get('categorySelector')?.invalid"

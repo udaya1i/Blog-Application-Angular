@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="contianer">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <h1 class="text-center mt-3">Login Here</h1>
+                <p class="text-center">Please enter your admin username and password to login </p> 
+                <form class="form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                    <div class="form-group">
+                        <label class="mt-3">Email</label>
+                        <input formControlName="emailaddr" type="text"  class="form-control"
+                            placeholder="xyz@gmail.com">
+
+
+                        <div *ngIf="loginForm.get('emailaddr')?.errors?.['required']">
+                            <div *ngIf="loginForm.get('emailaddr')?.touched && loginForm.get('emailaddr')?.invalid" class="alert alert-danger">Required
+                            </div>
+                        </div>
+                        <div *ngIf="loginForm.get('emailaddr')?.errors?.['email']">
+                            <div *ngIf="loginForm.get('emailaddr')?.touched && loginForm.get('emailaddr')?.invalid" class="alert alert-danger">Please Enter
+                                Valid Username/Email</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="mt-2">Password</label>
+                        <input formControlName="password" type="password"  class="form-control"
+                            placeholder="**********">
+                        <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                            <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="alert alert-danger">Required!
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                                <div *ngIf="loginForm.touched && loginForm.invalid" class="alert alert-danger">Password
+                                    must be more then 8 characters</div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success  mt-5 mb-5 ">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
