@@ -21,4 +21,10 @@ i{
 span{
     cursor: pointer;
 }
+.mark{
+color: rgb(90, 5, 5);;
+}
+.unmark{
+    color: rgb(153, 144, 144);
+}
 

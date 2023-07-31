@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
+import 'firebase/storage';
 @Injectable({
   providedIn: 'root'
 })
 export class PostServiceService {
 
-  constructor(private storage: AngularFireStorage,
+  constructor(
+    private storage: AngularFireStorage,
     private dataStorage: AngularFirestore,
     private tosterMessage: ToastrService,
     private router: Router
@@ -24,7 +26,7 @@ export class PostServiceService {
         data.ImagePath = URL
         let postdatas = data;
         if (status == 'Edit') {
-              this.updatePost(id, data)
+          this.updatePost(id, data)
         } else {
           this.saveData(data);
 
@@ -35,9 +37,7 @@ export class PostServiceService {
   }
   saveData(data: any) {
     this.dataStorage.collection('PostData').add(data).then((res) => {
-      // this.tosterMessage.success('Data Uploaded Successfully')
-      console.log('this i sres', res);
-
+      this.tosterMessage.success('Data Uploaded Successfully')
     });
   }
 
@@ -57,12 +57,17 @@ export class PostServiceService {
   //   return this.dataStorage.collection('PostData').valueChanges();
   // }
 
+  deleteImage(ImagePath: string, id: any,) {
+    this.storage.refFromURL(ImagePath).delete().subscribe((re) => {
+      console.log("image deleted");
+      this.deleteBlog(id);
+    });
+  }
   deleteBlog(data: string) {
     try {
       this.dataStorage.collection('PostData').doc(data).delete().then(delted => {
         this.tosterMessage.warning('Blog Deleted Successfully');
         console.log(delted);
-
       });
     } catch (er) {
       this.tosterMessage.error('Failed to delete Blog');
@@ -85,10 +90,23 @@ export class PostServiceService {
     return this.dataStorage.collection<NewPostInterface>('PostData').doc(id).valueChanges();
   }
 
-  updatePost(id:string, postDate:string) {
+  updatePost(id: string, postDate: string) {
     this.dataStorage.doc(`PostData/${id}`).update(postDate).then(res => {
       this.tosterMessage.success('Post Updated Successfully');
       this.router.navigate(['/posts'])
     })
   }
+  markFeatured(id:string, value:object) {
+    this.dataStorage.doc(`PostData/${id}`).update(value).then(res => {
+      console.log('featured');
+      console.log(res);
+    })
+    this.dataStorage.collection('PostData').valueChanges().subscribe(res=>{
+      console.log(res, "test");
+      console.log("test");
+      
+      
+    })
+
+ }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-single-post',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SinglePostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storage: AngularFirestore) { }
 
   ngOnInit(): void {
+    // getAllPostData
   }
 
 }

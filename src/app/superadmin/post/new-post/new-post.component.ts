@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperadminCategoryServiceService } from '../../Services/superadmin-category-service.service';
-import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewPostInterface } from 'src/app/interfaces/new-post-interface';
 import { PostServiceService } from '../../Services/post-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryInterface } from 'src/app/interfaces/category-interface';
-import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -19,7 +17,7 @@ export class NewPostComponent implements OnInit {
   postForm!: FormGroup;
   editedvalue: NewPostInterface | undefined;
   status: string = "Add New";
-  docuId:any;
+  docuId: any;
   constructor(
     private service: SuperadminCategoryServiceService,
     private formBuildre: FormBuilder,
@@ -34,7 +32,7 @@ export class NewPostComponent implements OnInit {
         this.postService.editBlogData(id).subscribe(res => {
           this.editedvalue = res;
           this.postForm = this.formBuildre.group({
-            title: [this.editedvalue?.title, [Validators.required, Validators.minLength(5)]],
+            title: [this.editedvalue?.title, [Validators.required, Validators.minLength(4)]],
             categorySelector: [`${this.editedvalue?.category.categoryId}-${this.editedvalue?.category.category}`, Validators.required],
             permlink: [this.editedvalue?.permLink, Validators.required],
             image: ['', Validators.required],
@@ -45,17 +43,14 @@ export class NewPostComponent implements OnInit {
           this.status = 'Edit'
         })
       }
-    })
+    });
   }
   ngOnInit(): void {
-
-
-
     this.service.getCategory().subscribe(cate => {
       this.category = cate;
     });
     this.postForm = this.formBuildre.group({
-      title: ['', [Validators.required, Validators.minLength(5)]],
+      title: ['', [Validators.required, Validators.minLength(4)]],
       categorySelector: ['', Validators.required],
       permlink: ['', Validators.required],
       image: ['', Validators.required],
@@ -78,7 +73,6 @@ export class NewPostComponent implements OnInit {
 
   sumbitNewPost() {
     let splitCategoryData = this.postForm.value.categorySelector.split('-');
-
     const PostData: NewPostInterface = {
       title: this.postForm.value.title,
       permLink: this.postForm.value.permlink,
