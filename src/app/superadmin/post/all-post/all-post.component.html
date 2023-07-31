@@ -5,8 +5,8 @@
                 <div class="card-body text-center">
                     <h1>All Posts</h1>
                     <p>Manage all you posts</p>
-                    <button class="btn btn-success mb-2 mt-5" routerLink="/post/new">Add New Post</button>
-                    <button class="btn btn-warning mb-2 mt-5" routerLink="/superadmin-dashboard">Back to
+                    <button class="btn btn-success mb-2 mt-5" routerLink="/admin-post/new">Add New Post</button>
+                    <button class="btn btn-warning mb-2 mt-5" routerLink="/admin-dashboard">Back to
                         Dashboard</button>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                             <td>{{item.data.createdAt.toMillis() | date}}</td>
                             <td>{{item.data.excerpt}}</td>
                             <td class="justify-content-center">
-                                <span (click)="editBlog()" routerLink="/post/new" [queryParams]="{id:item.id}"><i
+                                <span (click)="editBlog()" routerLink="/admin-post/new" [queryParams]="{id:item.id}"><i
                                         class="fas fa-edit"></i></span>
                                 <span (click)="deleteBlog(item.data.ImagePath, item.id)"><i
                                         class="fas fa-trash"></i></span>

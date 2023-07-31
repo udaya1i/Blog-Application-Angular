@@ -42,31 +42,31 @@ const routes: Routes = [
     component: TermConditionsComponent
   },
   {
-    path:'comment',
+    path:'user-comment',
     component:CommentFormComponent
   },
   {
-    path:'comment-list',
+    path:'user-comment-list',
     component:CommentListComponent
   },
   {
-    path:'superadmin-dashboard',
+    path:'admin-dashboard',
     component:DashboardComponent
   },
   {
-    path:'category',
+    path:'admin-category',
     component:CategoryComponent
   }, 
   {
-    path:'posts',
+    path:'admin-posts',
     component:AllPostComponent
   },
   {
-    path:'post/new',
+    path:'admin-post/new',
     component:NewPostComponent
   },
   {
-    path:'auth/login',
+    path:'admin-auth/login',
     component:LoginComponent
   }
 

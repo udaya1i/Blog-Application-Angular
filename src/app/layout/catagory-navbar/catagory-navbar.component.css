@@ -8,3 +8,15 @@ nav{
     text-transform: uppercase;
     color: var(--text-color-navbar);
 }
+p{
+    color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.logout{
+width: 80px;
+height: 30px;
+margin-top: 10px;
+border-radius: 10px;
+background-color: rgb(167, 102, 102);
+}

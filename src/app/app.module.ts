@@ -31,6 +31,7 @@ import { AllPostComponent } from './superadmin/post/all-post/all-post.component'
 import { NewPostComponent } from './superadmin/post/new-post/new-post.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http'
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'
 
 
 
@@ -68,7 +69,8 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserAnimationsModule,
     AngularEditorModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireAuthModule
     
     
   ],
