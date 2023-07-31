@@ -14,13 +14,6 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Title</label>
-                            <!-- <input 
-                            formControlName="title" 
-                            type="text" 
-                            class="form-control"
-                            (keyup)="onKeyUp($event)
-                            [ngClass]="{'is-invalid': postForm.get}"> -->
-
                             <input type="text" formControlName="title" class="form-control" (keyup)="onKeyUp($event)"
                                 [ngClass]="{'is-invalid':postForm.get('title')?.touched && postForm.get('title')?.invalid}">
                             <div *ngIf="postForm?.get('title')?.errors?.['required']">
@@ -97,7 +90,6 @@
             <div class="col-md-10 card box-shadow">
                 <div class=" card-body form-group mb-4">
                     <label for="">Content</label>
-                    <!-- <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea> -->
                     <angular-editor formControlName="content" class="form-control"></angular-editor>
                     <div *ngIf="postForm.get('content')?.errors?.['minlength']">
                         <div *ngIf="postForm.get('content')?.touched && postForm.get('content')?.invalid"

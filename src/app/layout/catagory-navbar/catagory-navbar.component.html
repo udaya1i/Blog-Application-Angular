@@ -10,10 +10,10 @@
         </div>
     </div>
     <div class="container" *ngIf="isUser">
-        <div class="collapse navbar-collapse justify-content-center">
+        <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-                <p >test@gami.com</p>
-                <button class="logout">LogOut</button>
+                <p >{{userEmail}}</p>
+                <p class="test"  (click)="logOut()" >Logout</p>
             </ul>
         </div>
     </div>

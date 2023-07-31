@@ -26,7 +26,7 @@ export class AuthServiceService {
     })
   }
   loggedinUser() {
-    this.authenticationService.authState.subscribe(res => {
+ return this.authenticationService.authState.subscribe(res => {
       console.log(JSON.parse(JSON.stringify(res)));
     })
   }
