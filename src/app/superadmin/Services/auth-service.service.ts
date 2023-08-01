@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
+  isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private authenticationService: AngularFireAuth,
@@ -19,6 +21,7 @@ export class AuthServiceService {
       this.message.success('Login Successfully!');
       this.router.navigate(['/admin-dashboard'])
       this.loggedinUser();
+      this.isAdmin.next(true)
       localStorage.setItem('admin', email)
     }).catch(e => {
       console.log("Invalid Credintial");
@@ -26,8 +29,13 @@ export class AuthServiceService {
     })
   }
   loggedinUser() {
- return this.authenticationService.authState.subscribe(res => {
+    return this.authenticationService.authState.subscribe(res => {
       console.log(JSON.parse(JSON.stringify(res)));
     })
+  }
+  logout() {
+    localStorage.removeItem('admin');
+    this.router.navigate(['admin-auth/login'])
+    this.isAdmin.next(false)
   }
 }
