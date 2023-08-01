@@ -11,16 +11,15 @@ import { __param } from 'tslib';
 export class CatagoryNavbarComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private authservice: AuthServiceService, private route: Router) { }
-  isAdmin: boolean = true;
+  isAdmin: boolean = false;
   userEmail: string | any;
 
   ngOnInit(): void {
     if (localStorage.getItem('admin')) {
       this.userEmail = localStorage.getItem('admin')
+      this.isAdmin = true;
     }
-    this.authservice.isAdmin.subscribe(res => {
-      this.isAdmin = res
-    })
+    
   }
   logOut() {
     this.authservice.logout();

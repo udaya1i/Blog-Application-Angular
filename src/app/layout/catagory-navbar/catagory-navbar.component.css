@@ -24,3 +24,9 @@ background-color: rgb(167, 102, 102);
     font-size:17px;
     cursor: pointer;
 }
+i{
+    color: whitesmoke;
+}
+span{
+    cursor: pointer;
+}
