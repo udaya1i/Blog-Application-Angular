@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-single-post',
@@ -8,11 +7,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit {
-
+  @Input() featured: any;
   constructor(private storage: AngularFirestore) { }
-
   ngOnInit(): void {
-    // getAllPostData
+    console.log("ts", this.featured);
   }
-
+ 
 }

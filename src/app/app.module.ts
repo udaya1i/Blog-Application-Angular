@@ -72,7 +72,10 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'
     ReactiveFormsModule,
     AngularFireAuthModule,
   ],
-  
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

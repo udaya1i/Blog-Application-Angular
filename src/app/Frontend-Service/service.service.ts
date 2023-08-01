@@ -31,4 +31,8 @@ export class ServiceService {
     return this.database.collection('PostData', post => post.where('isFeatured', '==', true)).valueChanges();
   }
 
+  getAllPosts(){
+  return  this.database.collection('PostData').valueChanges();
+  }
+
 }
