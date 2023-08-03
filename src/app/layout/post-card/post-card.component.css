@@ -22,7 +22,21 @@ img{
 width: 100%;
 height: 100%;
 padding: 10px;
+cursor: pointer;
+
 }
 .card{
     height: 500px;
+}
+.post-card-data{
+    margin-bottom: 50px;
+}
+.post-card-data:hover{
+    padding: 1px;
+}
+.title{
+    cursor: pointer;
+}
+.text:hover{
+    cursor: copy;
 }

@@ -8,10 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PostCardComponent implements OnInit {
 
   constructor() { }
-  @Input() featured:any;
+  @Input() postData:object | any;
 
   ngOnInit(): void {
-    console.log("abc test", this.featured);
     
   }
 }

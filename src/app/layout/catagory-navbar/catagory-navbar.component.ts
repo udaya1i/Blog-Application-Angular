@@ -10,26 +10,24 @@ import { __param } from 'tslib';
   styleUrls: ['./catagory-navbar.component.css']
 })
 export class CatagoryNavbarComponent implements OnInit {
-  
-  
-
-  constructor(private router: ActivatedRoute, private authservice: AuthServiceService, private frontendService:ServiceService) { }
+  constructor(
+    private router: ActivatedRoute,
+    private authservice: AuthServiceService,
+    private frontendService: ServiceService,
+    private route:Router
+    ) { }
   isAdmin: boolean = false;
   userEmail: string | any;
-  categories:string | any;
+  categories: string | any;
 
   ngOnInit(): void {
     if (localStorage.getItem('admin')) {
       this.userEmail = localStorage.getItem('admin')
       this.isAdmin = true;
     }
-    
-    this.frontendService.getAllCategories().subscribe(res=>{
-      console.log("thsi is result", res);
+    this.frontendService.getAllCategories().subscribe(res => {
       this.categories = res;
-      
-      
-      
+      console.log(res);
       
     })
   }
@@ -39,4 +37,5 @@ export class CatagoryNavbarComponent implements OnInit {
       this.isAdmin = res
     })
   }
+ 
 }

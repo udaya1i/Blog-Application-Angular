@@ -48,24 +48,26 @@
 
 <div>
     <div class="featured-section">
-        <div class="continaer text-center">
+        <div class="continaer text-center mb-5 mt-3">
             <h1>Featured Post</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, quasi.</p>
         </div>
         <div class="row">
-            <div class="col-sm-3 items" *ngFor="let item of featuredPost">
-                <app-post-card [featured]="item"></app-post-card>
+            <div class="col-sm-3 items " *ngFor="let item of featuredPost" >
+                <app-post-card [postData]="item"></app-post-card>
             </div>
         </div>
     </div>
     <div class="popular-post">
-        <div class="container text-center justify-content-center mb-3">
-            <h1>Popular post</h1>
+        <div class="container text-center justify-content-center mb-5">
+            <h1>Recent posts</h1>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam eaque necessitatibus totam facilis
                 dignissimos nesciunt nostrum minus illo dolores ipsam?</p>
         </div>
         <div class="row">
-            <div class="col-sm-4" *ngFor="let item of allPost"> <app-post-card [allPostData] = "item"></app-post-card></div>
+            <div class="col-sm-4 " *ngFor="let item of recentPost">
+                <app-post-card [postData]="item"></app-post-card>
+            </div>
         </div>
     </div>
 </div>

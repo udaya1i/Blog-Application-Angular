@@ -31,7 +31,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'single-catagory',
+    path: 'single-catagory/:id',
     component: SingleCatagoryComponent
   },
   {
