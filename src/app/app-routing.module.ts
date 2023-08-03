@@ -35,7 +35,7 @@ const routes: Routes = [
     component: SingleCatagoryComponent
   },
   {
-    path: 'single-post',
+    path: 'single-post/:id',
     component: SinglePostComponent
   },
   {

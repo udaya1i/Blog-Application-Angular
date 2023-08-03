@@ -30,3 +30,6 @@ i{
 span{
     cursor: pointer;
 }
+a:hover{
+    cursor: pointer;
+}

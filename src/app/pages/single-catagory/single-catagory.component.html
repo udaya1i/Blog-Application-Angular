@@ -7,11 +7,8 @@
         </div>
     </div>
     <div class="row single-page-card-details">
-        <div class="col-sm-4"><app-post-card></app-post-card></div>
-        <div class="col-sm-4"><app-post-card></app-post-card></div>
-        <div class="col-sm-4"><app-post-card></app-post-card></div>
-        <div class="col-sm-4"><app-post-card></app-post-card></div>
-        <div class="col-sm-4"><app-post-card></app-post-card></div>
-
+        <div class="col-sm-4" *ngFor="let item of categoriesData">
+            <app-post-card [postData]="item"></app-post-card>
+        </div>
     </div>
 </div>
