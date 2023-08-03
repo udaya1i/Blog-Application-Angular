@@ -43,39 +43,37 @@ const routes: Routes = [
     component: TermConditionsComponent
   },
   {
-    path:'user-comment',
-    component:CommentFormComponent
+    path: 'user-comment',
+    component: CommentFormComponent
   },
   {
-    path:'user-comment-list',
-    component:CommentListComponent
+    path: 'user-comment-list',
+    component: CommentListComponent
   },
   {
-    path:'admin-dashboard',
-    component:DashboardComponent,
-    canActivate:[RouterGuardGuard]
+    path: 'admin-dashboard',
+    component: DashboardComponent,
+    canActivate: [RouterGuardGuard]
   },
   {
-    path:'admin-category',
-    component:CategoryComponent,
-    canActivate:[RouterGuardGuard]
-  }, 
-  {
-    path:'admin-posts',
-    component:AllPostComponent,
-    canActivate:[RouterGuardGuard]
+    path: 'admin-category',
+    component: CategoryComponent,
+    canActivate: [RouterGuardGuard]
   },
   {
-    path:'admin-post/new',
-    component:NewPostComponent,
-    canActivate:[RouterGuardGuard]
-
+    path: 'admin-posts',
+    component: AllPostComponent,
+    canActivate: [RouterGuardGuard]
   },
   {
-    path:'admin-auth/login',
-    component:LoginComponent
-  }
-
+    path: 'admin-post/new',
+    component: NewPostComponent,
+    canActivate: [RouterGuardGuard]
+  },
+  {
+    path: 'admin-auth/login',
+    component: LoginComponent
+  },
 ];
 
 @NgModule({

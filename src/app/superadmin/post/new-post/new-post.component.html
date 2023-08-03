@@ -38,7 +38,7 @@
                             <label for="">Excerpt</label>
                             <textarea formControlName="excerpt" class="form-control" name="" id="" cols="30"
                                 [ngClass]="{'is-invalid':postForm.get('excerpt')?.touched && postForm.get('excerpt')?.invalid}"
-                                rows="10"></textarea>
+                                rows="10" maxlength="245"></textarea>
 
                             <div *ngIf="postForm.get('excerpt')?.errors?.['required']">
                                 <div *ngIf="postForm.get('excerpt')?.touched && postForm.get('excerpt')?.invalid"
@@ -48,7 +48,7 @@
                             <div *ngIf="postForm.get('excerpt')?.errors?.['minlength']">
                                 <div *ngIf="postForm.get('excerpt')?.touched && postForm.get('excerpt')?.invalid"
                                     class="form-control alert alert-danger">
-                                    Excerpt must be more then 50 characters</div>
+                                    Excerpt must be more then 200 characters</div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                     <div *ngIf="postForm.get('content')?.errors?.['minlength']">
                         <div *ngIf="postForm.get('content')?.touched && postForm.get('content')?.invalid"
                             class="alert alert-danger">
-                            Your content must be more then 100 characters
+                            Your content must be more then 500 characters
                         </div>
                     </div>
                     <div *ngIf="postForm.get('content')?.errors?.['required']">

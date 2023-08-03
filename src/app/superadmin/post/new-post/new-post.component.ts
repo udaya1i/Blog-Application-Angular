@@ -54,8 +54,8 @@ export class NewPostComponent implements OnInit {
       categorySelector: ['', Validators.required],
       permlink: ['', Validators.required],
       image: ['', Validators.required],
-      excerpt: ['', [Validators.required, Validators.minLength(20)]],
-      content: ['', [Validators.required, Validators.minLength(100)]],
+      excerpt: ['', [Validators.required, Validators.minLength(200)]],
+      content: ['', [Validators.required, Validators.minLength(500)]],
     });
   }
   onKeyUp(value: any) {

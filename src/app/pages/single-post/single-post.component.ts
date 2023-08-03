@@ -7,10 +7,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit {
-  @Input() featured: any;
-  constructor(private storage: AngularFirestore) { }
+  constructor() { }
   ngOnInit(): void {
-    console.log("ts", this.featured);
   }
- 
+
 }

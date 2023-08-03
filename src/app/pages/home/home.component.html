@@ -53,8 +53,8 @@
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, quasi.</p>
         </div>
         <div class="row">
-            <div class="col-sm-3" *ngFor="let data of featuredPost">
-                <app-post-card [featured]="data"></app-post-card>
+            <div class="col-sm-3 items" *ngFor="let item of featuredPost">
+                <app-post-card [featured]="item"></app-post-card>
             </div>
         </div>
     </div>

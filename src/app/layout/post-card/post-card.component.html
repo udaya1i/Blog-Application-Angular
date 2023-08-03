@@ -1,13 +1,16 @@
-<div class="card">
-    <img src="../../../assets/random image.jpg" alt="Image Not Found" class="card-img-top">
-    <div class="card-body">
-        <small class="bg-light text-danger text-center">Design</small>
-        <small class="bg-light text-success text-center move ">Features</small>
-        <small class="bg-light text-info text-center move">Views - 10k</small>
-        <h5 class="mt-1">Lorem, ipsum dolor sit amet consectetur </h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, aspernatur accusantium laboriosam incidunt
-            nulla illum placeat quia? Ducimus sapiente modi, atque sed, nulla excepturi veniam nam, quidem molestias
-            nihil alias?</p>
-        <small class="bg-light text-success text-center ml-3">Last Update - July 23, 2023</small>
+<div class="post-card-data">
+    <div class="card">
+        <div class="wid">
+            <img src="{{featured.ImagePath}}" alt="Image Not Found" class="card-img-top ">
+        </div>
+        <div class="card-body">
+            <small class="bg-light text-danger text-center">{{featured.category.category}}</small>
+            <small class="bg-light text-success text-center move ">Features</small>
+            <small class="bg-light text-info text-center move">Views - {{featured.views}}</small>
+            <h5 class="mt-1">{{featured.title}}</h5>
+            <p>{{featured.excerpt}}</p>
+            <small class="bg-light text-success text-center ml-3">Last Update -
+                {{featured.createdAt.toMillis() | date}}</small>
+        </div>
     </div>
 </div>
