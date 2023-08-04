@@ -16,7 +16,7 @@ export class SingleCatagoryComponent implements OnInit {
       const id = res['id']
       this.service.categoryPosts(id).subscribe(categories => {
         this.categoriesData = categories;
-        console.log(categories);
+        console.log(categories, 'this i swhat i wakjaklsjdfasdfasdf');
       })
     })
   }
