@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceService } from 'src/app/Frontend-Service/service.service';
 
 @Component({
   selector: 'app-post-card',
@@ -11,7 +12,6 @@ export class PostCardComponent implements OnInit {
   @Input() postData: Array<object> | any;
   ngOnInit(): void {
     console.log("postdata", this.postData);
-    
   }
   openSinglePage(id:string){
     console.log("clicked", id);

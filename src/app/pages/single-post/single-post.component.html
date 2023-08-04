@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
                     <small class="bg-light text-info text-center">{{datas.category.category}}</small>
-                    <small class="bg-light text-warning text-center marlef">Featured</small>
+                    <small class="bg-light text-warning text-center marlef" *ngIf="datas.isFeatured" >Featured</small>
                     <small class="bg-light text-danger text-center marlef">Views - {{datas.views}}</small>
                     <small class="bg-light text-success text-center marlef">LAST UPDATE - {{datas.createdAt.toMillis() |
                         date}}</small>

@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { fromEventPattern, map } from 'rxjs';
+import * as firebase from 'firebase'
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,8 @@ export class ServiceService {
   constructor(
     private storage: AngularFireStorage,
     private database: AngularFirestore,
-    private firebaseAuthentication: AngularFireAuth
+    private firebaseAuthentication: AngularFireAuth,
+    private message:ToastrService
   ) { }
 
   getAllCategories() {
@@ -71,18 +74,35 @@ export class ServiceService {
   getSingleCategory(id: string) {
     return this.database.collection('PostData').doc(id).valueChanges();
   }
-  // getRelatedBlog(cateId: any) {
-  //   return this.database.collection('PostData', categorydata => categorydata
-  //     .where('category.categoryId', '==', cateId))
-  //     .snapshotChanges()
-  //     .pipe(
-  //       map(data => {
-  //         return (data.map(category => {
-  //           const id = category.payload.doc.id;
-  //           const data = category.payload.doc.data();
-  //           return { id, data }
-  //         }))
-  //       })
-  //     )
-  // }
+  categoryRelatedPosts(categoryId: string) {
+    return this.database.collection('PostData', categorydata => categorydata
+      .where('category.categoryId', '==', categoryId).limit(4))
+      .snapshotChanges()
+      .pipe(
+        map(data => {
+          return (data.map(category => {
+            const id = category.payload.doc.id;
+            const data = category.payload.doc.data();
+            return { id, data }
+          }))
+        })
+      )
+  }
+  count(id:any){
+    const viewCount={
+      views: firebase.default.firestore.FieldValue.increment(1)
+    }
+    this.database.collection('PostData').doc(id).update(viewCount).then((res)=>{
+      console.log("updated successfully");
+    })
+  }
+  subscriber(data:any){
+    this.database.collection('Subscriber').add(data).then(res=>{
+      console.log('subscribed!!');
+      this.message.success('User Subscribed Successfully!')
+    })
+  }
+  checkDuplication(data:string){
+   return this.database.collection('Subscriber', res => res.where('email','==',data)).get();
+  }
 }

@@ -4,18 +4,36 @@
             <h3>SUBSCRIPTION FORM</h3>
             <p class="">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit nesciunt, repellat labore illum nisi consequuntur dolores non odio sit nam?
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit nesciunt, repellat labore illum nisi
+                consequuntur dolores non odio sit nam?
             </p>
-            <form action="" class="form-inline form mb-5 mt-5">
+            <form action="" class="form-inline form mb-5 mt-5" [formGroup]="subscriptionForm" (submit)="subscribe()">
                 <div class="d-flex align-items-center">
                     <div class="form-group col-md-4">
-                        <input type="text" class="form-control box-shadow" placeholder="Enter Your Name">
+                        <input formControlName="name" type="text" class="form-control box-shadow"
+                            placeholder="Enter Your Name">
+                        <div *ngIf="subscriptionForm.get('name')?.errors?.['required']">
+                            <div class="alert alert-danger" *ngIf="subscriptionForm.get('name')?.touched 
+                        && subscriptionForm.get('name')?.invalid">Required</div>
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
-                        <input type="email" class="form-control box-shadow" placeholder="Enter Your Email">
+                        <input type="email" formControlName="email" class="form-control box-shadow"
+                            placeholder="Enter Your Email">
+                        <div *ngIf="subscriptionForm.get('email')?.errors?.['required']">
+                            <div *ngIf="subscriptionForm.get('email')?.
+                                touched && subscriptionForm.get('email')?.touched" class="alert alert-danger">
+                                Required</div>
+                        </div>
+                        <div *ngIf="subscriptionForm.get('email')?.errors?.['email']">
+                            <div class="alert alert-danger"
+                                *ngIf="subscriptionForm.get('email')?.touched && subscriptionForm.get('email')?.invalid">
+                                Please enter valid email</div>
+                        </div>
                     </div>
                     <div class="form-group col-md-2 ">
-                        <button class="btn btn-info btn-block btn-sub form-control">Subscribe</button>
+                        <button [disabled]="subscriptionForm.invalid"
+                            class="btn btn-info btn-block btn-sub form-control">Subscribe</button>
                     </div>
                 </div>
             </form>
