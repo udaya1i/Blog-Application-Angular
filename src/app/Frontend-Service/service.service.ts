@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { fromEventPattern, map } from 'rxjs';
+import { Observable, fromEventPattern, map } from 'rxjs';
 import * as firebase from 'firebase'
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,7 +15,7 @@ export class ServiceService {
     private storage: AngularFireStorage,
     private database: AngularFirestore,
     private firebaseAuthentication: AngularFireAuth,
-    private message:ToastrService
+    private message: ToastrService
   ) { }
 
   getAllCategories() {
@@ -88,21 +88,33 @@ export class ServiceService {
         })
       )
   }
-  count(id:any){
-    const viewCount={
+  count(id: any) {
+    const viewCount = {
       views: firebase.default.firestore.FieldValue.increment(1)
     }
-    this.database.collection('PostData').doc(id).update(viewCount).then((res)=>{
+    this.database.collection('PostData').doc(id).update(viewCount).then((res) => {
       console.log("updated successfully");
     })
   }
-  subscriber(data:any){
-    this.database.collection('Subscriber').add(data).then(res=>{
+  subscriber(data: any) {
+    this.database.collection('Subscriber').add(data).then(res => {
       console.log('subscribed!!');
       this.message.success('User Subscribed Successfully!')
     })
   }
-  checkDuplication(data:string){
-   return this.database.collection('Subscriber', res => res.where('email','==',data)).get();
+
+  checkDuplication(email: string): Observable<string | null> {
+    return this.database.collection('Subscriber', res => res.where('email', '==', email)).get()
+      .pipe(
+        map(querySnapshot => {
+          console.log("quer", querySnapshot);
+          
+          if (!querySnapshot.empty) {
+            return email;
+          } else {
+            return null;
+          }
+        })
+      );
   }
 }

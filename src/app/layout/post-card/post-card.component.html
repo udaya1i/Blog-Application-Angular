@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <small class="bg-light text-danger text-center">{{postData.data.category.category}}</small>
-            <small class="bg-light text-success text-center move ">Features</small>
+            <small class="bg-light text-success text-center move" *ngIf="postData.isFeatured">Featured</small>
             <small class="bg-light text-info text-center move">Views - {{postData.data.views}}</small>
             <h5 class="mt-1 title">{{postData.data.title}}</h5>
             <p class="text">{{postData.data.excerpt}}</p>
