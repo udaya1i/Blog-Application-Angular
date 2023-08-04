@@ -28,8 +28,9 @@ export class CatagoryNavbarComponent implements OnInit {
     this.frontendService.getAllCategories().subscribe(res => {
       this.categories = res;
       console.log(res);
-      
+     
     })
+
   }
   logOut() {
     this.authservice.logout();

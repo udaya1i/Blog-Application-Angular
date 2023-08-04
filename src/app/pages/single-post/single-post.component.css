@@ -1,33 +1,41 @@
-.img-contianer{
+.img-contianer {
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 100px;
     border: 1px solid red;
     height: 50vh;
 }
-img{
-width: 500px;
-/* height: 60vh; */
-height: 500px;
+
+img {
+    width: 30%;
 
 }
-.marlef{
+
+.marlef {
     margin-left: 10px;
 }
-.comment-section{
+
+.comment-section {
     border: 1px solid red;
 }
-input[type=comment]{
+
+input[type=comment] {
     height: 100px;
     width: 50px;
 }
+
 input [type=namee] {
     height: 100px;
     width: 50px;
 }
-.cls{
-margin-left: 10px;
-margin-right: 10px;
-margin-top: 10px;
+
+.cls {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
+.testing {
+    display: flex;
+    justify-content: center;
+}

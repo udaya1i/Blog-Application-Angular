@@ -2,8 +2,10 @@
 
     <div class="container" *ngIf="!isAdmin">
         <div class="collapse navbar-collapse justify-content-center">
-            <ul class="navbar-nav" *ngFor="let item of categories">
-                <li class="nav-item ml-3" [routerLink]="['/single-catagory',item.categoriesId]">
+            <ul class="navbar-nav" *ngFor="let item of categories" >
+                <li class="nav-item ml-3" [routerLink]="['/single-catagory',item.categoriesId]"
+                
+                >
                     <a class="nav-link">{{item.categories.category}}</a>
                 </li>
             </ul>

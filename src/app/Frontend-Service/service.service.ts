@@ -71,18 +71,18 @@ export class ServiceService {
   getSingleCategory(id: string) {
     return this.database.collection('PostData').doc(id).valueChanges();
   }
-
-  getRelatedProduct(CID: string) {
-   return this.database.collection('PostData', data => data.where('category.categoryId', '==', CID))
-      .snapshotChanges()
-      .pipe(
-        map(data => {
-          return (data.map(categorys => {
-            const id = categorys.payload.doc.id;
-            const data = categorys.payload.doc.data();
-            return { id, data };
-          }))
-        })
-      )
-  }
+  // getRelatedBlog(cateId: any) {
+  //   return this.database.collection('PostData', categorydata => categorydata
+  //     .where('category.categoryId', '==', cateId))
+  //     .snapshotChanges()
+  //     .pipe(
+  //       map(data => {
+  //         return (data.map(category => {
+  //           const id = category.payload.doc.id;
+  //           const data = category.payload.doc.data();
+  //           return { id, data }
+  //         }))
+  //       })
+  //     )
+  // }
 }
