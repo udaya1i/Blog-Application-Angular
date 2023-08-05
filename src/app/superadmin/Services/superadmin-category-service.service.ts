@@ -97,4 +97,7 @@ export class SuperadminCategoryServiceService {
       this.toaster.error("Error!!")
     }
   }
+  getSubscriberDetail(){
+    return this.firestore.collection('Subscriber').valueChanges();
+  }
 }

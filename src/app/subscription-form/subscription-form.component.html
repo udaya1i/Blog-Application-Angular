@@ -13,8 +13,8 @@
             </div>
 
         </div>
-        <form action="" class="form-inline form mb-5 mt-5" [formGroup]="subscriptionForm" (submit)="subscribe()">
-            <div class="d-flex align-items-center">
+        <form action="" class="form-inline form mb-5 mt-5" [formGroup]="subscriptionForm" (submit)="subscribe()" >
+            <div class="d-flex align-items-center" *ngIf="!userNotExist" >
                 <div class="form-group col-md-4">
                     <input formControlName="name" type="text" class="form-control box-shadow"
                         placeholder="Enter Your Name">

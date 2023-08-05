@@ -74,6 +74,11 @@ const routes: Routes = [
     path: 'admin-auth/login',
     component: LoginComponent
   },
+  {
+    path:'subscribers',
+    component:SubscriptionComponent,
+    canActivate:[RouterGuardGuard]
+  }
 ];
 
 @NgModule({
